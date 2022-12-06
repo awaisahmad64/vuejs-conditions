@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<title>Document</title>
+		<style>
+		.product{
+		display:flex;
+		justify-content:space-around;
+		background: #eee;
+		box-shadow:0 2px 4px #9c9c9c;
+		padding:15px;
+		}
+		.color{
+		border:none !important;
+		color:#333 !important;
+		}
+		.blue,.red,.grey{
+		display:inline-block;
+		padding:5px;
+		border-radius:50%;
+		margin-right:10px;
+		}
+		.blue{
+		background: black;
+		cursor:pointer;
+		}
+		.red{
+		background: red;
+		cursor:pointer;
+		}
+		.grey{
+		background:grey;
+		cursor:pointer;
+		}
+		img{
+		width:150px;
+		height:150px;
+		padding:10px;
+		border:1px solid #9c9c9c;
+		transition:all .2a;
+		}
+		h2{
+		padding:0 0 0 0;
+		}
+		.color{
+		border:1px solid green;
+		color:green;
+		margin-left:5px;
+		display:inline-block;
+		border-radius:50px;
+		font-size:12px;
+		padding:3px 10px;
+		}
+		button{
+		padding:5px;
+		outline:none;
+		border:none;
+		cursor:pointer;
+		}
+		.add{
+		border:1px solid orange;
+		margin-right:5px;
+		color:orange;
+		cursor:pointer;
+		}
+		.add:hover{
+		border:1px solid orange;
+		margin-right:5px;
+		color:white;
+		background: orange;
+		cursor:pointer;
+		}
+		.shop{
+		background: orange;
+		color:white;
+		}
+		del{color:red;margin-left:10px;}
+		.in{margin:10px 0;padding:3px 10px; font-size:12px; display:inline-block; background:green; border-radius:50px;color:white;}
+		.out{padding:3px 10px; font-size:12px; display:inline-block; background:red; border-radius:50px;color:white; margin:10px 0;}
+		@media screen and (max-width: 600px){
+			.product{
+				max-width: 100%;
+				flex-direction: column;
+				margin: auto;
+				align-content: center;
+				justify-content:center;
+			}
+			.product-image{
+				display: block;
+				text-align: center;
+			}
+			.product-content{
+				text-align: center;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="product">
+				<div class="product-image">
+					<img :src="firstimg" alt="">
+				</div>
+				<div class="product-content">
+					<h2>Branded T-Shirt</h2>
+					<span>$749.99</span><span><del>$859.99</del></span><br><span v-if="inStock" class="in">In Stock</span><span v-else class="out">Out of Stock</span><span class="color">Colors:</span><span v-on:mouseover="blue" class="blue"></span><span v-on:mouseover="change" class="red"></span> <span v-on:mouseover="grey" class="grey"></span><br>
+					<button class="add">Add To card</button><button class="shop">
+					shop now
+					</button>
+				</div>
+			</div>
+		</div>
+		<script>
+			var app = new Vue({
+		el : '#app',
+		data: {
+		firstimg:'https://desirepress.com/previews/plugins/wp-content/uploads/sites/3/2013/06/T_5_back-180x180.jpg',
+		inStock:true
+		},
+		methods:{
+		change(){
+		this.firstimg = 'https://desirepress.com/previews/plugins/wp-content/uploads/sites/3/2013/06/T_1_back-180x180.jpg';
+		},
+		blue(){
+		this.firstimg ='https://desirepress.com/previews/plugins/wp-content/uploads/sites/3/2013/06/T_5_back-180x180.jpg';
+		},
+		grey(){
+		this.firstimg = 'https://desirepress.com/previews/plugins/wp-content/uploads/sites/3/2013/06/T_7_back.jpg';
+		}
+		}
+		});
+		</script>
+	</body>
+</html>
